@@ -1,0 +1,24 @@
+{
+  "name": "tests",
+  "version": "1.0.0",
+  "description": "Automated tests for Applied Energy Paper",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Arne Meeuw",
+  "license": "ISC",
+  "dependencies": {
+    "argparse": "^1.0.10",
+    "await-to-js": "^2.1.1",
+    "client": "git+https://github.com/ameeuw/client.git",
+    "csv-generate": "^3.2.0",
+    "csv-parse": "^4.3.1",
+    "csv-stringify": "^5.3.0",
+    "deterministic-json": "^1.0.5",
+    "express": "^4.16.4",
+    "loadtest": "^3.0.4",
+    "ssh2": "^0.8.0",
+    "transactions": "git+https://github.com/ameeuw/transactions.git"
+  }
+}

@@ -1,0 +1,165 @@
+<head>
+<link rel="stylesheet" href="static/bootstrap.min.css">
+<link rel="stylesheet" href="static/style.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/dreampulse/computer-modern-web-font/master/fonts.css">
+<link rel="stylesheet" href="static/bootstrap-datetimepicker.min.css" />
+<script type="text/javascript" src="static/jquery.min.js"></script>
+<script type="text/javascript" src="static/moment.min.js"></script>
+<script type="text/javascript" src="static/bootstrap.min.js"></script>
+<script type="text/javascript" src="static/bootstrap-datetimepicker.min.js"></script>
+<script src="static/highcharts.js"></script>
+<script src="static/exporting.js"></script>
+<script src="static/offline-exporting.js"></script>
+<script src="static/export-data.js"></script>
+<script src="static/axios.min.js"></script>
+<script src="compare.js"></script>
+<title>
+  Quartierstrom Profile Comparison
+</title>
+</head>
+
+<body>
+  <div id="content" class="container content">
+    <!-- Title Row -->
+    <div class="row" style="align:center;height:10%">
+      <div class="col-md-12 col-lg-12">
+        <!-- <input type='text' class="form-control" id='datetimepicker'/> -->
+        <label for="datasetSelect">Dataset:</label>
+        <select id="datasetSelect" class="form-control" style="width:100%;height:50%"></select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 col-lg-12">
+        <div id="loader" style="display:none;">
+          <center>
+            <img src="preloader_tetris.gif"/>
+          </center>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 col-lg-12">
+        <h3>
+          By Validators and Datarate
+          <small class="text-muted">View maximum transactions per second at different datarates / validators</small>
+        </h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 col-lg-12">
+        <div id="container6" style="margin: 1em auto; max-width: 1200px; height: 500px"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 col-lg-12">
+        <div id="container8" style="margin: 1em auto; max-width: 1200px; height: 500px"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 col-lg-12">
+        <div id="container7" style="margin: 1em auto; max-width: 1200px; height: 500px"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 col-lg-12">
+        <div id="container9" style="margin: 1em auto; max-width: 1200px; height: 500px"></div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-2 col-lg-2">
+        <label for="periodSelect">Settlement period:</label>
+        <select id="periodSelect" class="form-control" style="width:100%">
+          <option value=1>1 second</option>
+          <option value=60>60 seconds</option>
+          <option value=300>300 seconds</option>
+          <option value=900>900 seconds</option>
+        </select>
+      </div>
+      <div class="col-md-10 col-lg-10">
+        <h3>
+        <h3>
+          Value Tables
+          <small class="text-muted">Shows the maximum transactions per second at different validators and data rates</small>
+        </h3>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 col-lg-12">
+        <table id="table_values" class="table table-sm">
+        </table>
+      </div>
+    </div>
+
+
+    <!-- <div class="row">
+      <div class="col-md-12 col-lg-12">
+        <div id="container" style="margin: 1em auto; max-width: 1200px; height: 500px"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 col-lg-12">
+        <div id="container1" style="margin: 1em auto; max-width: 1200px; height: 500px"></div>
+      </div>
+    </div> -->
+
+
+    <div class="row">
+      <div class="col-md-2 col-lg-2">
+        <label for="datarateSelect">Datarate:</label>
+        <select id="datarateSelect" class="form-control" style="width:100%"></select>
+      </div>
+      <div class="col-md-10 col-lg-10">
+        <h3>
+          Validators
+          <small class="text-muted">View transactions per second by number of validators at a given datarate</small>
+        </h3>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 col-lg-12">
+        <div id="container2" style="margin: 1em auto; max-width: 1200px; height: 500px"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 col-lg-12">
+        <div id="container3" style="margin: 1em auto; max-width: 1200px; height: 500px"></div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-2 col-lg-2">
+        <label for="validatorSelect">Validators:</label>
+        <select id="validatorSelect" class="form-control" style="width:100%"></select>
+      </div>
+      <div class="col-md-10 col-lg-10">
+        <h3>
+          Datarate
+          <small class="text-muted">View transactions per second by datarate at a given number of validators</small>
+        </h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 col-lg-12">
+        <div id="container4" style="margin: 1em auto; max-width: 1200px; height: 500px"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 col-lg-12">
+        <div id="container5" style="margin: 1em auto; max-width: 1200px; height: 500px"></div>
+      </div>
+    </div>
+
+    <div id="container_template" style="display: none;">
+      <div class="row">
+        <div class="col-lg-12 col-md-12" style="width:100%;">
+          <div class="div-container" style="margin: 0 auto"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
